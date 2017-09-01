@@ -1,2 +1,9 @@
-<!-- shows a user's profile page with stats and stuff -->
-"user profile whyyyyy"
+
+
+<h1><%=@user.id%>'s Progress:</h1>
+<!-- Some logic that references decks and their stats -->
+
+<!-- this is here to test functionality but can be moved to the layout after merging. -->
+<form class="log_out" action = "/users/logout" method="post">
+  <input type="submit" value="Log out">
+</form>
