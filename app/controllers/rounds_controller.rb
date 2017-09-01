@@ -1,10 +1,8 @@
 
 get '/rounds/:round_id/decks/:deck_id' do
-  @deck = Deck.find_by(id: params[:deck_id]).cards
-# @card =
-# if card.guesses.true_false == true
-
-  erb :"partials/_question_show", locals: {card: @card}, layout: false
+  @round = Round.find(params[:round_id])
+  @card = @round.remaining_cards.sample
+  erb :"show.erb"
 end
 
 post '/rounds/:round_id/cards/:card_id/guesses' do
@@ -13,7 +11,7 @@ post '/rounds/:round_id/cards/:card_id/guesses' do
   if params[:answer] == correct_answer
     Guess.create(card_id: params[:card_id], guess: params[:answer], true_false: "true", round_id: params[:round_id])
   else
-     Guess.create(card_id: params[:card_id], guess: params[:answer], true_false: "true", round_id: params[:round_id])
+     Guess.create(card_id: params[:card_id], guess: params[:answer], true_false: "false", round_id: params[:round_id])
   end
-    redirect '/round/:deck_id'
+  redirect '/rounds/:round_id/decks/:deck_id'
 end
