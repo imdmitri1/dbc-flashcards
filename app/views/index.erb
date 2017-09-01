@@ -1,0 +1,19 @@
+<% if session[:id] %>
+  <%= erb :'sessions/_delete' %>
+<% else %>
+  <a href="/users/new">Register</a>
+  <a href="/sessions/new">Login</a>
+<% end %>
+
+<!-- logout should be a delete form for REST convention -->
+
+
+<ul>
+  <% @decks.each do |deck|%>
+    <li>
+      <form action="/decks/<%= deck.id %>/rounds" method="post">
+        <input type="hidden" name="deck_id" value=<%= deck.id %>>
+        <input class="deck-select" type="submit" value="<%= deck.name %>">
+      </form></li>
+  <% end %>
+</ul>
