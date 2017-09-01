@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :decks
-  has_many :cards
+  has_many :rounds
 
   validates :username, :email, presence: true
   validates :username, :email, uniqueness: true
@@ -11,6 +11,12 @@ class User < ActiveRecord::Base
 
   def password=(new_password)
     self.hashed_pw = BCrypt::Password.create(new_password)
+  end
+
+  def self.authenticate(email, password)
+    @user = User.find_by(email: email)
+    return nil unless @user
+    @user.password == password ? @user : nil
   end
 
 end
