@@ -34,3 +34,4 @@ Deck.create!(name: "nighthawk flashcards", creator_id:1)
 Deck.create!(name: "otter flashcards", creator_id:1)
 Deck.create!(name: "raccoon flashcards", creator_id:1)
 
+User.create!(username: "bob", email: "bob@bob.com", hashed_pw: "bob")
