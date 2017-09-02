@@ -1,6 +1,6 @@
-<% if card %>
-  <b><%= card.question %></b><br>
-  <form action="" method="Post">
+<% if @card %>
+  <b><%= @card.question %></b><br>
+  <form action="/rounds/#{@round.id}/cards/#{@card.id}/guesses" method="Post">
     <input type="text" name="answer">
     <input type="submit">
   </form>
