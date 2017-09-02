@@ -10,7 +10,7 @@ get '/decks/:id' do
   erb :'decks/show'
 end
 
-get '/decks/:id/rounds' do
-  @round = Round.new
-  redirect "/rounds/#{@round.id}/decks/params[:id]"
+post '/decks/:id/rounds' do
+  @round = Round.create({deck_id: params[:id], user_id: session[:user_id]})
+  redirect "/rounds/#{@round.id}/decks/#{params[:id]}"
 end

@@ -1,10 +1,11 @@
 <% if @card %>
   <b><%= @card.question %></b><br>
-  <form action="/rounds/#{@round.id}/cards/#{@card.id}/guesses" method="Post">
+  <form action='<%="/rounds/#{@round.id}/decks/#{@deck.id}/cards/#{@card.id}"%>' method="Post">
     <input type="text" name="answer">
     <input type="submit">
   </form>
 <% else %>
   <p>You finished!</p>
   <a href="">Statistics</a>
+  <!-- count up guesses and stuff -->
 <% end %>
