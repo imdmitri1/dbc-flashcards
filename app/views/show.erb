@@ -17,7 +17,11 @@
     <p>Cards correct on the first guess: <%=@round.cards_correct_on_first_attempt.length%></p>
     <p>Total guesses: <%=@round.total_attempts%></p>
   </div>
-
+  <h2>Breakdown</h2>
+  <% @total_cards = @deck.cards.length %>
+  <% @first_try = @round.cards_correct_on_first_attempt.length %>
+  <% @total_cards -= @first_try %>
+  <%= erb :'partials/_pie_chart' %>
 
 <% end %>
 
