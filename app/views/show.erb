@@ -5,7 +5,14 @@
     <input type="submit">
   </form>
 <% else %>
-  <p>You finished!</p>
-  <a href="">Statistics</a>
+  <h1>You finished!</h1>
+  <div class="stats">
+    <h2>Statistics</h2>
+    <p>Deck name: <%=@deck.name%></p>
+    <p>Total cards: <%=@deck.cards.length%></p>
+    <p>Cards correct on the first guess: <%=@round.cards_correct_on_first_attempt.length%></p>
+    <p>Total guesses: <%=@round.total_attempts%></p>
+  </div>
+
   <!-- count up guesses and stuff -->
 <% end %>

@@ -17,4 +17,8 @@ class Round < ActiveRecord::Base
     cards - correct_cards
   end
 
+   def total_attempts
+    self.guesses.sum(:attempt)
+  end
+
 end

@@ -8,6 +8,7 @@ end
 
 post '/rounds/:round_id/decks/:deck_id/cards/:card_id' do
   # make a guess for this card, in this round
+  @round = Round.find(params[:round_id])
   @card = Card.find(params[:card_id])
   correct_answer = @card.answer
   #this for if there is no guess for the card yet:
