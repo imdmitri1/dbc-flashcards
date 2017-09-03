@@ -1,3 +1,15 @@
-<h1>Here's the game!</h1>
+<h1><%=@deck.name%> Cards</h1>
 
-<!-- put some stats and an option to start the game, which links to decks/:id/rounds -->
+<div class ="stats">
+  <ul>
+    <% @deck.cards.each do |card| %>
+    <li><%=card.question%></li>
+    <li><%=card.answer%></li>
+    <br>
+    <% end %>
+  </ul>
+</div>
+
+<form class="play" action = "/decks/<%=@deck.id%>/rounds" method="post">
+  <input type="submit" value="Play this deck!">
+</form>

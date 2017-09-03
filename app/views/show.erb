@@ -1,3 +1,7 @@
+<% if @previous_card %>
+  <%= erb :'partials/_question_show', layout: false, :locals => { :previous_card => @previous_card, :previous_guess => @previous_guess } %>
+<% end %>
+
 <% if @card %>
   <b><%= @card.question %></b><br>
   <form action='<%="/rounds/#{@round.id}/decks/#{@deck.id}/cards/#{@card.id}"%>' method="Post">
@@ -14,5 +18,6 @@
     <p>Total guesses: <%=@round.total_attempts%></p>
   </div>
 
-  <!-- After submitting a guess, the user is informed whether or not the guess was correct and shown the correct answer. -->
+
 <% end %>
+

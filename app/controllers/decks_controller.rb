@@ -4,7 +4,9 @@ get '/decks' do
 end
 
 # DECKS show
-get '/decks/:id' do
+
+
+post '/decks/:id' do
   #show the stats or something for the deck
   @deck = Deck.find(params[:id])
   erb :'decks/show'

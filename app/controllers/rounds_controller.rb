@@ -3,6 +3,8 @@ get '/rounds/:round_id/decks/:deck_id' do
   @deck = Deck.find(params[:deck_id])
   @round = Round.find(params[:round_id])
   @card = @round.remaining_cards.sample
+  @previous_card = Card.find_by(id: session[:previous_card])
+  @previous_guess = Guess.find_by(round_id: params[:round_id], card_id: session[:previous_card])
   erb :show
 end
 
@@ -28,5 +30,6 @@ post '/rounds/:round_id/decks/:deck_id/cards/:card_id' do
        @guess = Guess.create(card_id: params[:card_id], true_false: "false", round_id: params[:round_id], attempt: 1)
     end
   end
+  session[:previous_card] = params[:card_id]
   redirect "/rounds/#{params[:round_id]}/decks/#{params[:deck_id]}"
 end

@@ -18,6 +18,14 @@
   <title>Flashcards</title>
 </head>
 <body>
+<% if session[:user_id] %>
+  <form class="log_out" action = "/users/logout" method="post">
+  <input type="submit" value="Log out">
+</form>
+<% else %>
+  <a href="/users/new">Register</a>
+  <a href="/users/login">Login</a>
+<% end %>
 
   <%= yield %>
 </body>
