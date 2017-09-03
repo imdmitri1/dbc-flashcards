@@ -7,8 +7,8 @@
    <% @total_cards = 0 %>
    <% @first_try = 0 %>
    <% @user.rounds.each do |round| %>
-    <ul>
-      <% Round.order('deck_id DESC, created_at') %>
+   <ul>
+      <% Round.order('deck_id ASC, created_at') %>
       <li>Deck name: <%= round.deck_name %></li>
       <li>Studied on: <%= round.created_at %></li>
       <li>Total cards: <%= round.cards.length%></li>

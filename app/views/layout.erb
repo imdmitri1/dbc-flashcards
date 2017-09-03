@@ -19,10 +19,12 @@
 </head>
 <body>
 <% if session[:user_id] %>
+  <a href="/">Home</a>
   <form class="log_out" action = "/users/logout" method="post">
   <input type="submit" value="Log out">
 </form>
 <% else %>
+  <a href="/">Home</a>
   <a href="/users/new">Register</a>
   <a href="/users/login">Login</a>
 <% end %>
