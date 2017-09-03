@@ -21,4 +21,9 @@ class Round < ActiveRecord::Base
     self.guesses.sum(:attempt)
   end
 
+  def deck_name
+    self.deck.name
+  end
+
+
 end
