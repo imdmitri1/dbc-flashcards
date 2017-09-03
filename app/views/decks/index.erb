@@ -1,7 +1,8 @@
 <ul>
   <% @decks.each do |deck| %>
     <li>
-      <form action="/decks/<%= deck.id %>/rounds" method="post">
+    <% Deck.order('created_at DESC') %>
+      <form action="/decks/<%= deck.id %>" method="post">
         <input type="hidden" name="deck_id" value="<%= deck.id %>">
         <input class="deck-select" type="submit" value="<%= deck.name %>">
       </form></li>

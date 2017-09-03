@@ -8,8 +8,22 @@ class Round < ActiveRecord::Base
   has_many :guesses
   has_many :correct_cards, ->{ where("guesses.true_false" => "true" ) }, through: :guesses, source: :card
 
+  has_many :cards_correct_on_first_attempt,
+    ->{ where("guesses.attempt" => 1 ) },
+    through: :guesses, source: :card
+
+
   def remaining_cards
     cards - correct_cards
   end
+
+   def total_attempts
+    self.guesses.sum(:attempt)
+  end
+
+  def deck_name
+    self.deck.name
+  end
+
 
 end

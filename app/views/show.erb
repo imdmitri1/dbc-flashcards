@@ -1,10 +1,23 @@
-<% if card %>
-  <b><%= card.question %></b><br>
-  <form action="" method="Post">
+<% if @previous_card %>
+  <%= erb :'partials/_question_show', layout: false, :locals => { :previous_card => @previous_card, :previous_guess => @previous_guess } %>
+<% end %>
+
+<% if @card %>
+  <b><%= @card.question %></b><br>
+  <form action='<%="/rounds/#{@round.id}/decks/#{@deck.id}/cards/#{@card.id}"%>' method="Post">
     <input type="text" name="answer">
     <input type="submit">
   </form>
 <% else %>
-  <p>You finished!</p>
-  <a href="">Statistics</a>
+  <h1>You finished!</h1>
+  <div class="stats">
+    <h2>Statistics</h2>
+    <p>Deck name: <%=@deck.name%></p>
+    <p>Total cards: <%=@deck.cards.length%></p>
+    <p>Cards correct on the first guess: <%=@round.cards_correct_on_first_attempt.length%></p>
+    <p>Total guesses: <%=@round.total_attempts%></p>
+  </div>
+
+
 <% end %>
+

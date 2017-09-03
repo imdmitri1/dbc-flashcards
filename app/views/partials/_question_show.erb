@@ -1,1 +1,12 @@
+<% if @previous_guess && @previous_guess.true_false == "true" %>
+  <p>Correct!
+  <br> The question was: <%=@previous_card.question%>
+  <br> The answer was: <%=@previous_card.answer%>
+  </p>
+<% elsif @previous_guess  %>
+  <p>Wrong!
+  <br> The question was: <%=@previous_card.question%>
+  <br> The answer was: <%=@previous_card.answer%>
+  </p>
+<% end %>
 

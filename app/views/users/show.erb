@@ -1,19 +1,17 @@
 
 
-<h1><%=@user.id%>'s Progress:</h1>
-<!-- Some logic that references decks and their stats -->
+<h1><%=@user.username%>'s Progress:</h1>
 
-<!-- this is here to test functionality but can be moved to the layout after merging. -->
-<form class="log_out" action = "/users/logout" method="post">
-  <input type="submit" value="Log out">
-</form>
-
-<!-- username
-deck.each
-  deck.name
-  These would need to leverage the associations with cards and guesses:
-    deck.round.created_at
-    deck.cards.length
-    deck.guesses.first_try_guesses
-    deck.guesses.total_guesses
- -->
+ <ul>
+ <% @user.rounds.each do |round| %>
+  <ul>
+    <% Round.order('deck_id DESC, created_at') %>
+    <li>Deck name: <%= round.deck_name %></li>
+    <li>Studied on: <%= round.created_at %></li>
+    <li>Total cards: <%= round.cards.length%></li>
+    <li>Cards correct on the first guess: <%= round.cards_correct_on_first_attempt.length %></li>
+    <li>Total guesses: <%= round.total_attempts %></li>
+    </ul>
+    <br>
+<% end %>
+</ul>
